@@ -19,3 +19,5 @@ AppBundle\Entity\Post:
         publishedAt:
             expose: true
             groups: ["list_posts"]
+        author:
+            expose: true
