@@ -1,0 +1,12 @@
+AppBundle\Entity\Client:
+    type: entity
+    table: oauth2_client
+    repositoryClass: AppBundle\Repository\ClientRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    lifecycleCallbacks: {  }

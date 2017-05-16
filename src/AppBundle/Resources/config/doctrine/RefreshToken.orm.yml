@@ -1,0 +1,21 @@
+AppBundle\Entity\RefreshToken:
+    type: entity
+    table: oauth2_refresh_token
+    repositoryClass: AppBundle\Repository\RefreshTokenRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    manyToOne:
+        client:
+            targetEntity: AppBundle\Entity\Client
+            joinColumn:
+                nullable: false
+
+        user:
+            targetEntity: AppBundle\Entity\User
+
+    lifecycleCallbacks: {  }

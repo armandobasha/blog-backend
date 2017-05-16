@@ -1,0 +1,40 @@
+AppBundle\Entity\Post:
+    type: entity
+    table: post
+    repositoryClass: AppBundle\Repository\PostRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+            title:
+                type: string
+            slug:
+                type: string
+            summary:
+                type: string
+            content:
+                type: text
+            publishedAt:
+                type: date
+                column: published_at
+    oneToMany:
+        comments:
+            targetEntity: AppBundle\Entity\Comment
+            mappedBy: post
+            orphanRemoval: true
+    manyToOne:
+        author:
+            targetEntity: AppBundle\Entity\User
+            joinColumn:
+                name: author_id
+                referencedColumnName: id
+                nullable: false
+    manyToMany:
+        tags:
+            targetEntity: AppBundle\Entity\Tag
+            joinTable:
+                name: post_tag
+    lifecycleCallbacks: {  }

@@ -1,0 +1,18 @@
+AppBundle\Entity\User:
+    type: entity
+    table: user
+    repositoryClass: AppBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        firstName:
+            type: string
+            column: first_name
+        lastName:
+            type: string
+            column: last_name
+    lifecycleCallbacks: {  }
