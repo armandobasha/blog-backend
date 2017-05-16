@@ -7,6 +7,9 @@ AppBundle\Entity\Post:
         slug:
             expose: true
             groups: ["list_posts"]
+        title:
+            expose: true
+            groups: ["list_posts"]
         summary:
             expose: true
             groups: ["list_posts"]
