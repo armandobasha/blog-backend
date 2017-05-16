@@ -1,0 +1,9 @@
+app.api.post_controller:
+    type: rest
+    resource: "@AppBundle/Controller/PostController.php"
+    name_prefix: api_
+
+app.api.user_controller:
+    type: rest
+    resource: "@AppBundle/Controller/UserController.php"
+    name_prefix: api_

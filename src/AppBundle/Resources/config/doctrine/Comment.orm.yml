@@ -11,8 +11,12 @@ AppBundle\Entity\Comment:
     fields:
         content:
             type: text
-        published_at:
+        publishedAt:
             type: datetime
+            column: publishedAt
+            gedmo:
+                timestampable:
+                    on: create
     manyToOne:
         post:
             targetEntity: AppBundle\Entity\Post
@@ -26,4 +30,7 @@ AppBundle\Entity\Comment:
                 name: author_id
                 referencedColumnName: id
                 nullable: false
+            gedmo:
+                blameable:
+                    on: create
     lifecycleCallbacks: {  }

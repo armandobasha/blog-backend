@@ -2,7 +2,7 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Comment
@@ -14,25 +14,24 @@ class Comment
      */
     private $id;
 
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
     /**
      * @var string
+     *
+     * @Assert\NotBlank(message="Comment cannot be blank!")
+     * @Assert\Length(
+     *     min=5,
+     *     minMessage="Please enter a comment longer than 5 characters!",
+     *     max=10000,
+     *     maxMessage="Comment is too long!"
+     * )
      */
     private $content;
 
     /**
      * @var \DateTime
+     * @Assert\DateTime
      */
-    private $published_at;
+    private $publishedAt;
 
     /**
      * @var \AppBundle\Entity\Post
@@ -43,6 +42,16 @@ class Comment
      * @var \AppBundle\Entity\User
      */
     private $author;
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
 
     /**
@@ -78,7 +87,7 @@ class Comment
      */
     public function setPublishedAt($publishedAt)
     {
-        $this->published_at = $publishedAt;
+        $this->publishedAt = $publishedAt;
 
         return $this;
     }
@@ -90,7 +99,7 @@ class Comment
      */
     public function getPublishedAt()
     {
-        return $this->published_at;
+        return $this->publishedAt;
     }
 
     /**

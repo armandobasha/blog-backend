@@ -2,7 +2,7 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Post
@@ -14,21 +14,11 @@ class Post
      */
     private $id;
 
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
     /**
      * @var string
+     * @Assert\NotBlank
      */
     private $title;
-
     /**
      * @var string
      */
@@ -36,16 +26,20 @@ class Post
 
     /**
      * @var string
+     * @Assert\NotBlank(message="Summary cannot be blank!")
      */
     private $summary;
 
     /**
      * @var string
+     * @Assert\NotBlank(message="Content cannot be blank!")
+     * @Assert\Length(min=10, minMessage="Contant must be longer than 10 characters!")
      */
     private $content;
 
     /**
      * @var \DateTime
+     * @Assert\DateTime
      */
     private $publishedAt;
 
@@ -61,6 +55,7 @@ class Post
 
     /**
      * @var \Doctrine\Common\Collections\Collection
+     * @Assert\Count(max="4", maxMessage="Too many tags!")
      */
     private $tags;
 
@@ -71,6 +66,16 @@ class Post
     {
         $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**

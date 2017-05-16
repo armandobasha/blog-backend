@@ -1,0 +1,18 @@
+AppBundle\Entity\Post:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+            groups: ["list_posts"]
+        slug:
+            expose: true
+            groups: ["list_posts"]
+        summary:
+            expose: true
+            groups: ["list_posts"]
+        content:
+            expose: true
+            groups: ["list_posts"]
+        publishedAt:
+            expose: true
+            groups: ["list_posts"]

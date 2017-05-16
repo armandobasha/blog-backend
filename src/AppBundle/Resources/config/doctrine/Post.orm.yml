@@ -9,17 +9,26 @@ AppBundle\Entity\Post:
             generator:
                 strategy: AUTO
     fields:
-            title:
-                type: string
-            slug:
-                type: string
-            summary:
-                type: string
-            content:
-                type: text
-            publishedAt:
-                type: date
-                column: published_at
+        title:
+            type: string
+        slug:
+            type: string
+            gedmo:
+                slug:
+                    separator: -
+                    style: camel
+                    fields:
+                        - title
+        summary:
+            type: string
+        content:
+            type: text
+        publishedAt:
+            type: date
+            column: published_at
+            gedmo:
+                timestampable:
+                    on: create
     oneToMany:
         comments:
             targetEntity: AppBundle\Entity\Comment
@@ -32,6 +41,9 @@ AppBundle\Entity\Post:
                 name: author_id
                 referencedColumnName: id
                 nullable: false
+            gedmo:
+                blameable:
+                    on: create
     manyToMany:
         tags:
             targetEntity: AppBundle\Entity\Tag

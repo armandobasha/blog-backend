@@ -1,0 +1,12 @@
+AppBundle\Entity\Comment:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+            groups: ["list_comments"]
+        content:
+            expose: true
+            groups: ["list_comments"]
+        publishedAt:
+            expose: true
+            groups: ["list_comments"]
