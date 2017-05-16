@@ -8,6 +8,7 @@ use AppBundle\Form\CommentType;
 use AppBundle\Form\PostType;
 use FOS\RestBundle\Controller\Annotations\View;
 use FOS\RestBundle\Controller\FOSRestController;
+use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -17,6 +18,10 @@ class PostController extends FOSRestController
     // ToDo: add pagination
 
     /**
+     *  @ApiDoc(
+     *     section="Posts",
+     *     description="Retrieve all posts"
+     * )
      * @View()
      */
     public function getPostsAction(Request $request)
@@ -30,6 +35,10 @@ class PostController extends FOSRestController
     }
 
     /**
+     * @ApiDoc(
+     *     section="Posts",
+     *     description="Retrieve a given post"
+     * )
      * @View()
      */
     public function getPostAction(Request $request, Post $post)
@@ -37,6 +46,15 @@ class PostController extends FOSRestController
         return $post;
     }
 
+    /**
+     * @ApiDoc(
+     *     section="Posts",
+     *     description="Create a post"
+     * )
+     *
+     * @param Request $request
+     * @return array|Response
+     */
     public function postPostAction(Request $request)
     {
         $data = $request->request->all();
@@ -59,6 +77,11 @@ class PostController extends FOSRestController
     }
 
     /**
+     * @ApiDoc(
+     *     section="Posts",
+     *     description="Edit a post"
+     * )
+     *
      * @View()
      * @param Request $request
      * @return array|\FOS\RestBundle\View\View
@@ -90,6 +113,11 @@ class PostController extends FOSRestController
     }
 
     /**
+     * @ApiDoc(
+     *     section="Posts",
+     *     description="Delete a post"
+     * )
+     *
      * @param Post $post
      * @return Response
      */
@@ -105,6 +133,10 @@ class PostController extends FOSRestController
     }
 
     /**
+     * @ApiDoc(
+     *     section="Comments",
+     *     description="Retrieve all comments for a post"
+     * )
      * @View()
      * @param Post $post
      * @return Response
@@ -119,6 +151,10 @@ class PostController extends FOSRestController
     }
 
     /**
+     * @ApiDoc(
+     *     section="Comments",
+     *     description="Retrieve a given comment for a given post"
+     * )
      * @View()
      * @param Post $post
      * @return Response
@@ -128,6 +164,16 @@ class PostController extends FOSRestController
         return $comment;
     }
 
+    /**
+     * @ApiDoc(
+     *     section="Comments",
+     *     description="Create a comment for a given post"
+     * )
+     *
+     * @param Request $request
+     * @param Post $post
+     * @return array|Response
+     */
     public function postPostCommentsAction(Request $request, Post $post)
     {
         $data = $request->request->all();
@@ -151,6 +197,10 @@ class PostController extends FOSRestController
     }
 
     /**
+     * @ApiDoc(
+     *     section="Comments",
+     *     description="Edit a comment for a post"
+     * )
      * @View()
      * @param Request $request
      * @param Post $post
@@ -180,6 +230,10 @@ class PostController extends FOSRestController
     }
 
     /**
+     * @ApiDoc(
+     *     section="Comments",
+     *     description="Delete a comment for a given post"
+     * )
      * @param Post $post
      * @return Response
      */

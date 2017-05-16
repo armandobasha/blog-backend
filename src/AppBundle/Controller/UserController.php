@@ -2,20 +2,21 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Comment;
-use AppBundle\Entity\Post;
-use AppBundle\Form\CommentType;
-use AppBundle\Form\PostType;
+use AppBundle\Entity\User;
 use FOS\RestBundle\Controller\Annotations\View;
 use FOS\RestBundle\Controller\FOSRestController;
+use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends FOSRestController
 {
 
     /**
      * @View()
+     *  @ApiDoc(
+     *     section="Users",
+     *     description="Retrieve all users"
+     * )
      */
     public function getUsersAction(Request $request)
     {
@@ -25,5 +26,17 @@ class UserController extends FOSRestController
         $users = $userRepository->findAll();
 
         return $users;
+    }
+
+    /**
+     * @ApiDoc(
+     *     section="Users",
+     *     description="Retrieve a given user"
+     * )
+     * @View()
+     */
+    public function getUserAction(Request $request, User $user)
+    {
+        return $user;
     }
 }

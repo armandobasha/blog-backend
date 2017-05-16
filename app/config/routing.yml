@@ -8,19 +8,9 @@ app.api:
     resource: "@AppBundle/Resources/config/routing.yml"
     prefix: /api
 
-#app_api_security:
-#    type: rest
-#    resource: "@AppBundle/Controller/SecurityController.php"
-#    prefix: /api
-#
-#app_api:
-#    type: rest
-#    resource: "@AppBundle/Resources/config/routing.yml"
-#    prefix: /api
-#
-#NelmioApiDocBundle:
-#    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
-#    prefix:   /api/doc
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc
 
 fos_oauth_server_token:
     resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
